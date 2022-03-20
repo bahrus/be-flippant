@@ -26,8 +26,8 @@
   </body>
   <script type='module'>
     import {Flipping} from '../Flipping.js';
-    const flipping = new Flipping();
     const root = document.body.shadowRoot;
+    const flipping = new Flipping({root});
     const elApp = root.querySelector('#app');
     function activate(state) {
       elApp.dataset.state = state;

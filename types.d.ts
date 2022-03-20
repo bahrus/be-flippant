@@ -45,4 +45,5 @@ export type FlipListener = (data: FlipData) => void;
 
 export interface FlippingConfig {
     getKey: ((element: HTMLElement) => string | null | undefined) | string;
+    root: Document | ShadowRoot;
 }

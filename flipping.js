@@ -14,7 +14,8 @@ export class Flipping {
                 throw new Error(`Missing flip key for element`);
             }
             return key;
-        }
+        },
+        root: document
     };
     static create(config = Flipping.defaultConfig) {
         return new Flipping(config);
@@ -114,7 +115,7 @@ export class Flipping {
     }
     toElementMap(elements) {
         if (!elements) {
-            elements = Array.from(document.querySelectorAll(`[${Flipping.keyAttr}]`)).filter(el => isVisible(el));
+            elements = Array.from(this.config.root.querySelectorAll(`[${Flipping.keyAttr}]`)).filter(el => isVisible(el));
         }
         const map = {};
         if (Array.isArray(elements)) {

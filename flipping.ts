@@ -23,8 +23,9 @@ export class Flipping {
         }
   
         return key;
-      }
-    };
+      },
+      root: document
+    } as FlippingConfig;
   
     public static create(config: FlippingConfig = Flipping.defaultConfig) {
       return new Flipping(config);
@@ -170,7 +171,7 @@ export class Flipping {
     ): FlipElementMap {
       if (!elements) {
         elements = (Array.from(
-          document.querySelectorAll(`[${Flipping.keyAttr}]`)
+          this.config.root.querySelectorAll(`[${Flipping.keyAttr}]`)
         ) as HTMLElement[]).filter(el => isVisible(el));
       }
       const map: FlipElementMap = {};
