@@ -1,6 +1,11 @@
-# be-flippant [TODO]
+# be-flippant [WIP]
 
-be-flippant first provides a ShadowDOM-friendly version of the [https://github.com/davidkpiano/flipping](flipping) library.  It also allows us to specify the DOM specifiers for the elements to apply the FLIP animation effect to.
+This package firstly provides a slightly altered version of the [https://github.com/davidkpiano/flipping](flipping) library.  In particular, be-flippant/flipping.js:
+
+1.  Is ES Module friendly.
+2.  Allows the functionality to work within a ShadowDOM realm.
+
+
 
 
 

@@ -44,6 +44,8 @@ export type FlipElementMap = Record<string, HTMLElement | undefined>;
 export type FlipListener = (data: FlipData) => void;
 
 export interface FlippingConfig {
+    // Specify how to get the key from an element.
     getKey: ((element: HTMLElement) => string | null | undefined) | string;
+    // Specify what ShadowDOM realm to apply the flip effect to.
     root: Document | ShadowRoot;
 }
