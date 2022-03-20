@@ -9,7 +9,7 @@
 		"strict": true,
 	},
 	"files":[
-		"flipping.ts"
+		"Flipping.ts"
 	],
 	"exclude":[
 		"build",
