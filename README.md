@@ -1,11 +1,7 @@
-# be-flippant [WIP]
-
-This package firstly provides a slightly altered version of the [https://github.com/davidkpiano/flipping](flipping) library.  In particular, be-flippant/flipping.js:
-
-1.  Is ES Module friendly.
-2.  Allows the functionality to work within a ShadowDOM realm.
+# be-flippant [TODO]
 
 
+Apply the FLIP technique while [transitioning between two elements](https://jackyef.com/posts/transitioning-between-2-different-elements-with-flip).
 
 
 
@@ -13,11 +9,60 @@ Add the [flip](https://github.com/googlearchive/flipjs) behavior to an element d
 
 ```html
 <div be-flippant='{
-    "duration": 500
+    "transition": ".src-element",
+    "to": ".dest-element",
+    "on": "click",
+    "of": ".trigger-element",
+    "nudge": true, // allow trigger element to be disabled until behavior latches on
+    "animate": [
+        [
+            // The first keyframe contains the inverting transformation
+            {
+                "transform": "translate(${deltaX}px, ${deltaY}px) scale(${deltaScaleX}, ${deltaScaleY})",
+            },
+            // The second keyframe undo the inverting transformation
+            { 
+                "transform": "none" 
+            },
+        ],
+        { "duration": 300, "easing": "ease-in-out" }
+    ]
 }'>
 ```
 
-Should do whatever [this](https://codesource.io/how-to-use-svelte-flip-animation/) example does.
+If editing use the may-it-be compiler, use a function for transform:
+
+```JavaScript
+{
+    transform: ({deltaX, deltaY, deltaScaleX, deltaScaleY}) => `translate(${deltaX}px, ${deltaY}px) scale(${deltaScaleX}, ${deltaScaleY})`
+}
+```
+
+Maybe provide a script tag option if the animation gets more complex?
+
+```html
+<div be-flippant='{
+    "transition": ".src-element",
+    "to": ".dest-element",
+    "on": "click",
+    "of": ".trigger-element",
+    "nudge": true, // allow trigger element to be disabled until behavior latches on
+    "animate": [
+        [
+            // The first keyframe contains the inverting transformation
+            {
+                "transform": "translate(${deltaX}px, ${deltaY}px) scale(${deltaScaleX}, ${deltaScaleY})",
+            },
+            // The second keyframe undo the inverting transformation
+            { 
+                "transform": "none" 
+            },
+        ],
+        { "duration": 300, "easing": "ease-in-out" }
+    ]
+}'>
+```
+
 
 ## Integrating with custom script
 
