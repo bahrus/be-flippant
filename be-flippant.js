@@ -22,7 +22,7 @@ export class BeFlippant extends EventTarget {
             const { transform } = pp;
             this.#tx = new Tx(self, self, transform, transformScope);
         }
-        this.#tx.transform();
+        await this.#tx.transform();
         const secondEl = container.querySelector(link[1]);
         if (secondEl === null)
             throw { msg: 404, link };
@@ -59,6 +59,7 @@ define({
             proxyPropDefaults: {
                 on: 'click',
                 transformScope: 'parent',
+                animOptions: { duration: 2300, easing: 'ease-in-out' },
             }
         },
         actions: {
