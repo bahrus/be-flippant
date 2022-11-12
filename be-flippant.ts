@@ -64,7 +64,7 @@ define<Proxy & BeDecoratedProps<Proxy, Actions>, Actions>({
             proxyPropDefaults: {
                 on: 'click',
                 transformScope: 'parent',
-                animOptions: { duration: 2300, easing: 'ease-in-out' },
+                animOptions: { duration: 500, easing: 'ease-in-out' },
             }
         },
         actions: {
