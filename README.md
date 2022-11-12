@@ -10,6 +10,8 @@ We would like to gracefully switch from the first scene to the next scene, with 
 
 That's what be-flippant does.  Behind the scenes it uses some boring math to figure it all out, and some [mature api's](https://caniuse.com/web-animation) to make it happen, and some acronym or other to give it some buzz.
 
+[![Playwright Tests](https://github.com/bahrus/be-flippant/actions/workflows/CI.yml/badge.svg?branch=baseline)](https://github.com/bahrus/be-flippant/actions/workflows/CI.yml)
+
 <a href="https://nodei.co/npm/be-flippant/"><img src="https://nodei.co/npm/be-flippant.png"></a>
 
 Size of package, including custom element behavior framework (be-decorated):
