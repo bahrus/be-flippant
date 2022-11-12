@@ -2,12 +2,13 @@ import {Matches, Scope} from 'trans-render/lib/types';
 import {MinimalProxy, EventConfigs} from 'be-decorated/types';
 
 export interface EndUserProps{
-    transform: Matches,
-    on: string | string[],
-    link: [string, string],
-    animOptions: KeyframeAnimationOptions,
-    transformScope: Scope,
-    linkScope: Scope,
+    transform?: Matches,
+    on?: string | string[],
+    link?: [string, string],
+    animOptions?: KeyframeAnimationOptions,
+    transformScope?: Scope,
+    linkScope?: Scope,
+    nudge?: boolean,
 }
 
 export interface VirtualProps extends EndUserProps, MinimalProxy{}
