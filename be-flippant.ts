@@ -4,8 +4,12 @@ import {define, BeDecoratedProps} from 'be-decorated/DE.js';
 import {ITx} from 'trans-render/lib/types';
 
 export class BeFlippant extends EventTarget implements Actions{
-    hydrate(pp: PP): PPE {
-        const {self, on} = pp;
+    async hydrate(pp: PP): Promise<PPE> {
+        const {self, on, nudge} = pp;
+        if(nudge){
+            const {nudge} = await import('trans-render/lib/nudge.js');
+            nudge(self);
+        }
         return [{resolved: true}, {
             doTransform: {on, of: self}
         }] as PPE;

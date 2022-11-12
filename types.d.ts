@@ -26,6 +26,6 @@ export type PA = Partial<PP>;
 export type PPE = [PA | undefined, EventConfigs<Proxy, Actions>];
 
 export interface Actions{
-    hydrate(pp: PP): PPE;
+    hydrate(pp: PP): Promise<PPE>;
     doTransform(pp: PP): void;
 }

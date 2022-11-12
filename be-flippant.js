@@ -1,8 +1,12 @@
 import { register } from 'be-hive/register.js';
 import { define } from 'be-decorated/DE.js';
 export class BeFlippant extends EventTarget {
-    hydrate(pp) {
-        const { self, on } = pp;
+    async hydrate(pp) {
+        const { self, on, nudge } = pp;
+        if (nudge) {
+            const { nudge } = await import('trans-render/lib/nudge.js');
+            nudge(self);
+        }
         return [{ resolved: true }, {
                 doTransform: { on, of: self }
             }];
