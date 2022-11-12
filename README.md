@@ -1,4 +1,4 @@
-# be-flippant [TODO]
+# be-flippant
 
 Use Case:
 
