@@ -1,12 +1,15 @@
 # be-flippant [TODO]
 
+Use Case:
 
+Our web page, or a part of the web page, consists of two "scenes".  There's some button that enables switching from one scene to the other.  
 
-Apply the FLIP technique while [transitioning between two elements](https://jackyef.com/posts/transitioning-between-2-different-elements-with-flip).
+In both scenes there is a "main character" (DOM element), that the user is meant to be drawn to.
 
+We would like to gracefully switch from the first scene to the next scene, with the user's eye focused on that "main character", which should smoothly morph between the two scenes.
 
+That's what be-flippant does.  Behind the scenes it uses some boring math to figure it all out, and some [mature api's](https://caniuse.com/web-animation) to make it happen, and some acronym or other to give it some buzz.
 
-Add the [flip](https://github.com/googlearchive/flipjs) behavior to an element declaratively.
 
 ```html
 <house-of-the-dragon season=1>
