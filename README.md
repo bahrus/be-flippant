@@ -1,6 +1,7 @@
 # be-flippant [TODO]
 
 
+
 Apply the FLIP technique while [transitioning between two elements](https://jackyef.com/posts/transitioning-between-2-different-elements-with-flip).
 
 
@@ -8,70 +9,31 @@ Apply the FLIP technique while [transitioning between two elements](https://jack
 Add the [flip](https://github.com/googlearchive/flipjs) behavior to an element declaratively.
 
 ```html
-<div>
-    <button>test</button>
-    <img class=src-element>
-    <img class=dest-element>
-    <script be-flippant='{
-        "transition": ".src-element",
-        "to": ".dest-element",
-        "on": "click",
-        "of": "button",
-        "nudge": true, // allow trigger element to be disabled until behavior latches on
-    }'>
-        export const animate = ({delataX, delataY, deltaScaleX, deltaScaleY}) =>  [
-            [
-                // The first keyframe contains the inverting transformation
-                {
-                    "transform": "translate(${deltaX}px, ${deltaY}px) scale(${deltaScaleX}, ${deltaScaleY})",
-                },
-                // The second keyframe undo the inverting transformation
-                { 
-                    "transform": "none" 
-                },
-            ],
-            { "duration": 300, "easing": "ease-in-out" }
-        ]
-    </script>
-    
-</div>
-```
-
-If editing use the may-it-be compiler, use a function for transform:
-
-```JavaScript
-{
-    transform: ({deltaX, deltaY, deltaScaleX, deltaScaleY}) => `translate(${deltaX}px, ${deltaY}px) scale(${deltaScaleX}, ${deltaScaleY})`
-}
-```
-
-Maybe provide a script tag option if the animation gets more complex?
-
-```html
-<div be-flippant='{
-    "transition": ".src-element",
-    "to": ".dest-element",
-    "on": "click",
-    "of": ".trigger-element",
-    "nudge": true, // allow trigger element to be disabled until behavior latches on
-    "animate": [
-        [
-            // The first keyframe contains the inverting transformation
-            {
-                "transform": "translate(${deltaX}px, ${deltaY}px) scale(${deltaScaleX}, ${deltaScaleY})",
+<house-of-the-dragon season=1>
+    <the-heirs-of-the-dragon>
+        <rhaenyra-targaryen actress="Milly Alcock"></rhaenyra-targaryen> 
+    </the-heirs-of-the-dragon>
+    <the-black-queen style="display:none">
+        <rhaenyra-targaryen actress="Emmy D'Arcy"></rhaenyra-targaryen>
+    </the-black-queen>
+    <button be-flippant='{
+        "transform": {
+            "theHeirsOfTheDragonE": {
+                "style": {"display": "none"}
             },
-            // The second keyframe undo the inverting transformation
-            { 
-                "transform": "none" 
-            },
-        ],
-        { "duration": 300, "easing": "ease-in-out" }
-    ]
-}'>
+            "theBlackQueenE":{
+                "style": {"display": "initial"}
+            }
+        },
+        "transition": "the-heirs-of-the-dragon>rhaenyra-targaryen",
+        "to": "the-black-queen>rhaenyra-targaryen",
+        "with-effects": { "duration": 300, "easing": "ease-in-out" }
+    }'
+    >Switch Episodes</button>
+</house-of-the-dragon>
 ```
 
 
-## Integrating with custom script
 
 
 
