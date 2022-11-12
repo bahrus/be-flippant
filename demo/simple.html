@@ -48,8 +48,44 @@
         const smallContainer = document.querySelector('.small.container');
         const largeContainer = document.querySelector('.large.container');
         smallSq.addEventListener('click', e => {
-            smallContainer.removeAttribute('data-active');
+            const firstDOMRect = smallSq.getBoundingClientRect();
+            console.log({firstDOMRect});
             largeContainer.setAttribute('data-active', '');
+            smallContainer.removeAttribute('data-active');
+            
+                const secondDOMRect = largeSq.getBoundingClientRect();
+            console.log({secondDOMRect});
+            // How much is the difference between the 2 positions?
+            const deltaX = secondDOMRect.x - firstDOMRect.x;
+            const deltaY = secondDOMRect.y - firstDOMRect.y;
+
+            // How much is the difference in their size?
+            const deltaScaleX = secondDOMRect.width / firstDOMRect.width;
+            const deltaScaleY = secondDOMRect.height / firstDOMRect.height;
+            const invertedDeltaX = -deltaX;
+            const invertedDeltaY = -deltaY;
+            const invertedDeltaScaleX = 1 / deltaScaleX;
+            const invertedDeltaScaleY = 1 / deltaScaleY;
+            //largeSq.style.transform = `translate(${invertedDeltaX}px, ${invertedDeltaY}px) scale(${invertedDeltaScaleX}, ${invertedDeltaScaleY})`;
+            //setTimeout(() => {
+                largeSq.animate(
+                    // Array of keyframes, in this case, we only need 2.
+                    [
+                        // The first keyframe contains the inverting transformation
+                        // {
+                        // transform: `translate(${deltaX}px, ${deltaY}px) scale(${deltaScaleX}, ${deltaScaleY})`,
+                        // },
+                        {
+                            transform: `translate(${invertedDeltaX}px, ${invertedDeltaY}px) scale(${invertedDeltaScaleX}, ${invertedDeltaScaleY})`
+                        },
+                        // The second keyframe undo the inverting transformation
+                        { transform: 'none' },
+                    ],
+                    { duration: 2300, easing: 'ease-in-out', iterations:1 },
+                );
+                
+            //}, 0);
+            
         });
         largeSq.addEventListener('click', e => {
             smallContainer.setAttribute('data-active', '');
