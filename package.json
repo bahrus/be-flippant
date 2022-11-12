@@ -1,8 +1,24 @@
 {
   "name": "be-flippant",
   "version": "0.0.1",
-  "description": "",
-  "main": "index.js",
+  "description": "Transition gracefully between two DOM elements",
+  "keywords": [
+    "web components",
+    "web component",
+    "custom elements",
+    "custom element",
+    "FLIP"
+  ],
+  "main": "be-flippant.js",
+  "module": "be-flippant.js",
+  "exports": {
+    ".": "./be-flippant.js",
+    "./be-flippant.js": "./be-flippant.js"
+  },
+  "files": [
+    "*.*"
+  ],
+  "types": "./types.d.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "serve": "node node_modules/may-it-serve/serve.js"
