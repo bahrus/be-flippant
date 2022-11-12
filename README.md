@@ -2,7 +2,7 @@
 
 Use Case:
 
-Our web page, or a part of the web page, consists of two "scenes".  There's some button that enables switching from one scene to the other.  
+Our web page, or a part of the web page, consists of two "scenes".  There's some (button) element that enables switching from one scene to the other.  
 
 In both scenes there is a "main character" (DOM element), that the user is meant to be drawn to.
 
@@ -28,9 +28,8 @@ That's what be-flippant does.  Behind the scenes it uses some boring math to fig
                 "style": {"display": "initial"}
             }
         },
-        "transition": "the-heirs-of-the-dragon>rhaenyra-targaryen",
-        "to": "the-black-queen>rhaenyra-targaryen",
-        "with-effects": { "duration": 300, "easing": "ease-in-out" }
+        "link": ["the-heirs-of-the-dragon>rhaenyra-targaryen", "the-black-queen>rhaenyra-targaryen"],
+        "animOptions": { "duration": 300, "easing": "ease-in-out" }
     }'
     >Switch Episodes</button>
 </house-of-the-dragon>

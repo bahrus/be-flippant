@@ -1,51 +1,30 @@
+import {Matches, Scope} from 'trans-render/lib/types';
+import {MinimalProxy, EventConfigs} from 'be-decorated/types';
 
-
-
-export interface StyleMap {
-    readonly [key: string]: string | number;
-}
-export  interface Rect extends ClientRect {
-    readonly top: number;
-    readonly bottom: number;
-    readonly left: number;
-    readonly right: number;
-    readonly width: number;
-    readonly height: number;
-    readonly transform?: string;
+export interface EndUserProps{
+    transform: Matches,
+    on: string | string[],
+    link: [string, string],
+    animOptions: KeyframeAnimationOptions,
+    transformScope: Scope,
+    linkScope: Scope,
 }
 
-export interface Delta extends Partial<Rect> {
-    x: number;
-    y: number;
-    widthRatio: number;
-    heightRatio: number;
+export interface VirtualProps extends EndUserProps, MinimalProxy{}
+
+export type Proxy = Element & VirtualProps;
+
+export interface ProxyProps extends VirtualProps{
+    proxy: Proxy
 }
 
-export type FlipData = {
-    state:
-      | 'read'
-      | 'pre-enter'
-      | 'enter'
-      | 'pre-move'
-      | 'move'
-      | 'pre-exit'
-      | 'exit';
-    key: string;
-    element: HTMLElement | undefined;
-    rect: Rect | undefined;
-    styles: StyleMap | undefined;
-    delta: Delta;
-    inverse: Delta;
-    previous: FlipData | undefined;
-  };
+export type PP = ProxyProps;
 
-export type FlipElementMap = Record<string, HTMLElement | undefined>;
-  
-export type FlipListener = (data: FlipData) => void;
+export type PA = Partial<PP>;
 
-export interface FlippingConfig {
-    // Specify how to get the key from an element.
-    getKey: ((element: HTMLElement) => string | null | undefined) | string;
-    // Specify what ShadowDOM realm to apply the flip effect to.
-    root: Document | ShadowRoot;
+export type PPE = [PA | undefined, EventConfigs<Proxy, Actions>];
+
+export interface Actions{
+    hydrate(pp: PP): PPE;
+    doTransform(pp: PP): void;
 }
