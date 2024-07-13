@@ -1,4 +1,4 @@
-# be-flippant
+# be-flippant (💫)
 
 Use Case:
 
